@@ -26,14 +26,14 @@
         wall.reset({
           selector: '.item',
           animate: true,
-  				cellW: 150,
-  				cellH: 'auto',
-  				onResize: function() {
-  					wall.fitWidth();
-  				}
+          cellW: 150,
+          cellH: 'auto',
+          onResize: function() {
+            wall.fitWidth();
+          }
         });
 
-        var folder = "imgs/FOOD/";
+        var folder = "imgs/PERFORMANCE/";
         $.ajax({
             url : folder,
             success: function (data) {
