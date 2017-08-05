@@ -1,9 +1,17 @@
+* {
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
 html, body {
   height: 100%;
 }
 
 body {
   background-size: cover;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Alegreya Sans SC', sans-serif;
 }
 
 .clear::after {
@@ -16,6 +24,15 @@ body {
   background: white;
   padding: 1.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.main_nav a{
+  transition: 0.3s;
+}
+
+.main_nav a:hover {
+  transition: 0.3s;
+  color: grey;
 }
 
 .main_nav > .logo {
@@ -36,36 +53,100 @@ body {
   margin: 0;
 }
 
+.mobile_nav {
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.mobile_nav > .xi-bars {
+  padding-top: 5px;
+}
+
+.mobile_nav ul {
+  margin: 0;
+}
+
+.mobile_nav ul > li {
+  list-style: none;
+}
+
+.mobile_nav > .dropDown {
+  color: grey;
+  display: none;
+}
+
+.title {
+  text-align: center;
+  margin: 2rem auto;
+}
+
 .item img {
 	margin: 0;
 	display: block;
 }
 
-/*.content {
-  padding: .5vw;
-  font-size: 0;
-  display: -ms-flexbox;
-  -ms-flex-wrap: wrap;
-  -ms-flex-direction: column;
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  display: -webkit-box;
+a {
+  color: inherit;
+}
+
+footer {
+  margin-top: 2rem;
+  color: white;
+  padding: 2rem;
+  background: black;
+  text-align: left;
+}
+
+.footer > .content {
+  margin-left: 1rem;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.sns > a:hover{
+  transition: 0.3s;
+  color: grey;
+}
+
+.button > a {
+  color: grey;
+}
+
+.topButton {
+  background: white;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+@media only screen and (max-width: 768px) {
+  .main_nav {
+    display: none;
+  }
+  .mobile_nav {
+    display: block;
+  }
+}
 
-.content div {
-  -webkit-box-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  width: 200px;
-  margin: .5vw;
+@media only screen and (min-width: 769px) {
+  .main_nav {
+    display: block;
+  }
+  .mobile_nav {
+    display: none;
+  }
 }
-.content div img {
-  width: 100%;
-  height: auto;
-}
-@media screen and (max-width: 400px) {
-  .content div { margin: 0; }
-  .content { padding: 0; }
-}*/

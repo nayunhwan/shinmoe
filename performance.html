@@ -4,87 +4,52 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Moeshin's portfolio</title>
-      <!-- Javascript -->
-    <!-- <script src="/lib/jQuery/jquery-3.2.1.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script src="/lib/Freewall/freewall.js"></script>
-    <!-- <script src="/lib/flexImages/jquery.flex-images.js"></script> -->
-    <script src="/lib/Semantic/semantic.js"></script>
+    <!-- Javascript -->
+    <script src="./lib/jQuery/jquery-3.2.1.js"></script>
+    <script src="./lib/Semantic/semantic.js"></script>
+    <script src="./lib/waterfall/waterfall.js"></script>
 
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/lib/Semantic/semantic.css">
-    <link rel="stylesheet" type="text/css" href="/lib/flexImages/jquery.flex-images.css">
-    <link rel="stylesheet" type="text/css" href="/css/animate.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./lib/Semantic/semantic.css">
+    <link rel="stylesheet" type="text/css" href="./lib/waterfall/waterfall.css">
+    <link rel="stylesheet" type="text/css" href="./css/animate.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 
     <script>
       $(document).ready(function(){
-        var wall = new Freewall("#container");
-        wall.reset({
-          selector: '.item',
-          animate: true,
-          cellW: 150,
-          cellH: 'auto',
-          onResize: function() {
-            wall.fitWidth();
-          }
-        });
-
-        var folder = "imgs/PERFORMANCE/";
-        $.ajax({
-            url : folder,
-            success: function (data) {
-                $(data).find("a").attr("href", function (i, val) {
-                    if( val.match(/\.(jpe?g|png|gif)$/) ) {
-                        var w = 1 + parseInt(3 * Math.random() << 0);
-                        $(".content").append("<div class='item' style='width:"+ w * 150 +"'><img src='"+ folder + val +"' width='100%'></div>");
-                    }
-                });
-            },
-            complete: function() {
-              wall.fitWidth();
-            }
-        });
-      })
+        $("header").load("./nav.html");
+        $(".mobile").load("./m_nav.html");
+        $("footer").load("./footer.html");
+        $(".button").load("./topButton.html");
+      });
     </script>
   </head>
   <body>
-    <div class="main_nav clear">
-      <div class="logo"><h3>MoeShin</h3></div>
-      <ul>
-        <li><h3><a href="/concept.html">CONCEPT&PORTARAIT</a></h3></li>
-        <li><h3><a href="/food.html">FOOD</a></h3></li>
-        <li><h3><a href="/performance.html">PERFORMANCE</a></h3></li>
-      </ul>
-    </div>
-    <div id="container" class="content">
+    <header></header>
+    <div class="mobile"></div>
+    <div class="title"><h1>Performance</h1></div>
+    <div id="container" class="wf-container">
+      <?php
+      $dirname = "./imgs/PERFORMANCE/";
+      $images = glob($dirname."*.jpg");
 
-    </div>
-    <script>
-      // $(function(){
-      //   var wall = new Freewall("#container");
-      //   wall.reset({
-      //     selector: '.item',
-  		// 		animate: true,
-  		// 		cellW: 150,
-  		// 		cellH: 'auto',
-  		// 		onResize: function() {
-  		// 			wall.fitWidth();
-  		// 		}
-      //   }, wall.fitWidth(););
-      //   wall.fitWidth();
-      //   // var images = wall.container.find('.item');
-  		// 	// images.find('img').load(function() {
-  		// 	// 	wall.fitWidth();
-  		// 	// });
-      // })
+      foreach($images as $image) {
+        $w = mt_rand(1, 3) * 150;
+        echo '<div class="wf-box"><img src="'.$image.'" width="100%"/></div>';
+      }
 
-    </script>
+      echo '<script>
+      var waterfall = new Waterfall({
+      	containerSelector: ".wf-container",
+      	boxSelector: ".wf-box",
+      	minBoxWidth: 250
+      });
+      </script>'
+      ?>
+    </div>
+    <footer></footer>
+    <div class="button"></div>
   </body>
-  <footer>
-    test
-  </footer>
 </html>
